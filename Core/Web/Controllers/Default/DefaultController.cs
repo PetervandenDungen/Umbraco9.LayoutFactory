@@ -39,6 +39,8 @@ namespace LayoutFactory.Core.Web.Controllers.Default
 
         public override IActionResult Index()
         {
+            //SetLayoutViewModel();
+
             return CurrentTemplate(CurrentPage);
         }
 
