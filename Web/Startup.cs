@@ -1,3 +1,4 @@
+using LayoutFactory.Core.Web.Controllers.Default;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using Umbraco.Cms.Core.DependencyInjection;
+using Umbraco.Cms.Web.Website.Controllers;
 using Umbraco.Extensions;
 
 namespace Web
@@ -43,6 +45,12 @@ namespace Web
                 .AddWebsite()
                 .AddComposers()
                 .Build();
+
+            // Configure Umbraco Render Controller Type
+            services.Configure<UmbracoRenderingDefaultsOptions>(c =>
+            {
+                c.DefaultControllerType = typeof(DefaultController);
+            });
         }
 
         /// <summary>

@@ -3,9 +3,17 @@
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
-
 @{
-    Layout = "_Layout.cshtml";
+	Layout = null;
+	var layoutModel = (LayoutViewModel)ViewData[DefaultController.LayoutViewModelKey];
 }
 
-<p>Rendering Home..</p>
+<p>Rendering Layout..</p>
+
+@if(layoutModel != null)
+{
+	<p>Layout model isn't null:</p>
+	<p>@layoutModel.TestProperty</p>
+}
+
+@RenderBody()
